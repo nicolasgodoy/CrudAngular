@@ -1,0 +1,57 @@
+<h1 style="font-size:1.7rem;" mat-dialog-title>{{tituloAccion}} Usuario</h1>
+<div mat-dialog-content>
+    
+    <form [formGroup]="formUsuario">
+        <mat-grid-list style="width:400px" cols="1" rowHeight="100px">
+            <mat-grid-tile>
+               
+                <mat-form-field  appearance="outline">
+                    
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="Nombre" style="font-size:1.5rem;" matInput placeholder="nombre" autocomplete="off"/>
+                    
+                    
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input formControlName="Apellido"  style="font-size: 1.5rem;"   matInput placeholder="apellido" autocomplete="off"/>
+                    
+                    
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Edad</mat-label>
+                    <input formControlName="Edad"  style="font-size: 1.5rem;" matInput  placeholder="edad" autocomplete="off" type="number"/>
+                    
+                    
+                </mat-form-field>
+            </mat-grid-tile>
+            
+
+            
+
+        </mat-grid-list>
+        
+        
+        
+        <!-- <button mat-raised-button style="width:100px; margin:10px;" color="primary" >Agregar</button>
+        <button mat-raised-button style="width:100px; margin:10px;" color="primary">Editar</button>
+        <button mat-raised-button style="width:100px; margin:10px;" color="primary">Limpiar</button> -->
+    </form>            
+                
+</div>
+                
+    
+<div mat-dialog-actions>
+    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="primary" mat-dialog-close
+     [disabled] = "formUsuario.invalid"
+     (click)="AgregarEditUsuario()">{{botonAccion}}
+     
+    </button>
+</div>

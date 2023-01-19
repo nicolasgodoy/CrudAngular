@@ -1,0 +1,91 @@
+<div class="contenedor-titulo">
+  <h1 style="color:rgb(0, 0, 0);">Crud Angular y Asp.Net</h1>
+  
+</div>
+
+
+<div style="display:flex;justify-content:center;align-items:center;align-content: center;flex-wrap: wrap;">
+  <div style="width:80%;">
+    <button mat-raised-button style="font-size:1.5rem;padding:20px; margin-bottom:5px;" color="primary" (click)="dialogNuevoEmpleado()">Nuevo Empleado</button>
+  </div>
+  
+</div>
+
+<div style="display:flex;justify-content:center;align-items:center;align-content: center;flex-wrap: wrap;">
+  <mat-form-field style="width:80%">
+     
+    <mat-label>Buscar usuario</mat-label>
+      <input style="padding:10px;" matInput (keyup)="applyFilter($event)" placeholder="buscar usuario" #input>
+  </mat-form-field>
+  
+    
+</div> 
+
+
+
+
+<div style="display:flex;justify-content:center;align-items:center;align-content: center;flex-wrap: wrap;">
+    
+
+    
+    
+      
+
+    <div class="mat-elevation-z8">
+      
+        <table mat-table [dataSource]="dataSource">
+      
+        <!-- Position Column -->
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="Apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let element"> {{element.Apellido}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Edad">
+            <th mat-header-cell *matHeaderCellDef> Edad </th>
+            <td mat-cell *matCellDef="let element"> {{element.Edad}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Acciones">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element" style="width:200px"> 
+              
+              <button mat-raised-button style="width:80px;padding:15px; margin:2px;" color="primary" (click)="dialogEditarEmpleado(element)">Editar</button>
+              <button mat-raised-button style="width:80px;padding:15px; margin:2px;" color="warn" (click)="dialogEliminarEmpleado(element)">Eliminar</button>
+            </td>  
+          
+            
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+      
+</div>
+
+
+
+
+
+
+
