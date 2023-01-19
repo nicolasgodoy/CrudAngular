@@ -65,7 +65,7 @@ export class AppComponent implements AfterViewInit,OnInit {
       disableClose:true,
       
     }).afterClosed().subscribe(resultado => {
-      if (resultado === ""){
+      if (resultado === "creado"){
         this.mostrarUsuario();
       }
     })
@@ -76,7 +76,7 @@ export class AppComponent implements AfterViewInit,OnInit {
       disableClose:true,
       data:dataUsuario,
     }).afterClosed().subscribe(resultado => {
-      if (resultado === ""){
+      if (resultado === "editado"){
         this.mostrarUsuario();
       }
     })
