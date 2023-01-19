@@ -20,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppComponent implements AfterViewInit,OnInit {
   displayedColumns: string[] = ['ID','Nombre', 'Apellido', 'Edad','Acciones'];
   dataSource = new MatTableDataSource<Usuario>();
+  
 
   constructor( private usuarioService: UsuarioService,public dialog: MatDialog,
     private _snackBar: MatSnackBar
@@ -51,12 +52,20 @@ export class AppComponent implements AfterViewInit,OnInit {
     })
   }
 
+  mensajeAlerta(msg:string, accion:string) {
+    this._snackBar.open(msg, accion,{
+      horizontalPosition:"end",
+      verticalPosition:"top",
+      duration:3000
+    });
+  }
+
   dialogNuevoEmpleado() {
     this.dialog.open(DialogAddEditComponent,{
       disableClose:true,
       
     }).afterClosed().subscribe(resultado => {
-      if (resultado === "creado"){
+      if (resultado === ""){
         this.mostrarUsuario();
       }
     })
@@ -67,19 +76,13 @@ export class AppComponent implements AfterViewInit,OnInit {
       disableClose:true,
       data:dataUsuario,
     }).afterClosed().subscribe(resultado => {
-      if (resultado === "editado"){
+      if (resultado === ""){
         this.mostrarUsuario();
       }
     })
   }
 
-  mensajeAlerta(msg:string, accion:string) {
-    this._snackBar.open(msg, accion,{
-      horizontalPosition:"end",
-      verticalPosition:"top",
-      duration:3000
-    });
-  }
+  
 
   dialogEliminarEmpleado(dataUsuario: Usuario) {
     this.dialog.open(ComponentDelete,{

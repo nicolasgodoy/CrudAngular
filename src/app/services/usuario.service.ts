@@ -11,6 +11,8 @@ export class UsuarioService {
   constructor(private http:HttpClient) {}
   
   url:string = "http://www.apiangularapp.somee.com/api/Usuario";
+ 
+  
 
   getUsuario(){
     return this.http.get<Usuario[]>(this.url);

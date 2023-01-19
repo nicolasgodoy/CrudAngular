@@ -68,7 +68,7 @@ export class DialogAddEditComponent implements OnInit {
                           /* ADD */
       this.usuarioService.AgregarUsuario(modelo).subscribe({
         next:(data) => {
-          this.mensajeAlerta("Empleado Creado","Listo")
+          //this.mensajeAlerta("Empleado Creado","Listo")
           this.dialogoReferencia.close("creado");
         },error:(e) => {
           this.mensajeAlerta("No se pudo crear","error");
@@ -77,7 +77,7 @@ export class DialogAddEditComponent implements OnInit {
     }else{                /* UPDATE */
       this.usuarioService.EditarUsuario(this.dataUsuario.ID, modelo).subscribe({
         next:(data) => {
-          this.mensajeAlerta("Empleado Editado","Listo")
+          //this.mensajeAlerta("Empleado Editado","Listo")
           this.dialogoReferencia.close("editado");
         },error:(e) => {
           this.mensajeAlerta("No se pudo editar","error");
