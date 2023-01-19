@@ -58,3 +58,57 @@ label{
     padding: 10px;
 }
 
+
+@media handheld,
+screen and (max-width:599px) {
+
+    h1{
+        font-size: 1.5rem;
+    }
+
+    .mat-mdc-dialog-container .mdc-dialog__content {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        
+        line-height: var(--mdc-dialog-supporting-text-line-height, 14px);
+        font-size: var(--mdc-dialog-supporting-text-size, 20px);
+        font-weight: var(--mdc-dialog-supporting-text-weight, 500);
+        letter-spacing: var(--mdc-dialog-supporting-text-tracking, 1px);
+        
+    }
+
+    .mdc-data-table__table {
+        
+        border-spacing: 4!important;
+        
+    }
+
+    .mat-mdc-row {
+        text-align: center!important;
+    }
+
+    .mdc-data-table__row{
+        text-align: center!important;
+    }
+
+    .cdk-row{
+        text-align: center!important;
+    }
+
+    .ng-star-inserted{
+        text-align: center!important;
+    }
+
+    .mat-mdc-paginator-range-label {
+        margin: 0 0px 0 0px!important;
+    }
+
+    th{
+        
+        font-size: 0.8rem;
+    }
+  
+}
+
