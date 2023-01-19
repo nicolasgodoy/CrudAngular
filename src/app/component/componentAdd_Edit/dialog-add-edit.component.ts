@@ -1,14 +1,10 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from "@angular/forms";
 import {MatDialogRef,MAT_DIALOG_DATA} from "@angular/material/dialog";
-
 import {MatSnackBar} from "@angular/material/snack-bar";
-
-import { MAT_DATE_FORMATS } from '@angular/material/core';
-
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
-import { ThisReceiver } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-dialog-add-edit',
@@ -68,7 +64,7 @@ export class DialogAddEditComponent implements OnInit {
                           /* ADD */
       this.usuarioService.AgregarUsuario(modelo).subscribe({
         next:(data) => {
-          //this.mensajeAlerta("Empleado Creado","Listo")
+          this.mensajeAlerta("Empleado Creado","Listo")
           this.dialogoReferencia.close("creado");
         },error:(e) => {
           this.mensajeAlerta("No se pudo crear","error");
@@ -77,7 +73,7 @@ export class DialogAddEditComponent implements OnInit {
     }else{                /* UPDATE */
       this.usuarioService.EditarUsuario(this.dataUsuario.ID, modelo).subscribe({
         next:(data) => {
-          //this.mensajeAlerta("Empleado Editado","Listo")
+          this.mensajeAlerta("Empleado Editado","Listo")
           this.dialogoReferencia.close("editado");
         },error:(e) => {
           this.mensajeAlerta("No se pudo editar","error");
