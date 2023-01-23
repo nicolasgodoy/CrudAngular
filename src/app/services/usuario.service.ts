@@ -11,7 +11,7 @@ export class UsuarioService {
   constructor(private http:HttpClient) {}
   
   url:string = "http://www.apiangularapp.somee.com/api/Usuario";
-  // url:string = "https://localhost:44330/api/Usuario"; PARA TRABAJAR LOCAL
+  // url:string = "https://localhost:44330/api/Usuario"; // PARA TRABAJAR LOCAL
   
 
   getUsuario(){
