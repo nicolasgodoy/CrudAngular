@@ -10,8 +10,7 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) {}
   
-  url:string = "https://SQL1002.site4now.net/api/Usuario";
-  //url:string = "http://www.apiangularapp.somee.com/api/Usuario";
+  url:string = "http://dominioangular.somee.com//api/Usuario";
   //url:string = "https://localhost:44330/api/Usuario"; // PARA TRABAJAR LOCAL
   
 
