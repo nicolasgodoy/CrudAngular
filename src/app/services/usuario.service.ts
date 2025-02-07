@@ -10,7 +10,7 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) {}
   
-  url:string = "http://https://crud-angular-one.vercel.app/.site4now.net/api/Usuario'/api/Usuario";
+  url:string = "http://https://crud-angular-one.vercel.app/.site4now.net/api/Usuario/api/Usuario";
   //url:string = "http://www.apiangularapp.somee.com/api/Usuario";
   // url:string = "https://localhost:44330/api/Usuario"; // PARA TRABAJAR LOCAL
   
