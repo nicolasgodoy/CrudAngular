@@ -28,7 +28,7 @@
             <label>Fecha de Nacimiento</label>
             <div class="input-container date-picker-container">
                 <i class="fas fa-calendar-alt"></i>
-                <input matInput [matDatepicker]="picker" formControlName="FechaNacimiento"
+                <input matInput [matDatepicker]="picker" formControlName="FechaNacimiento" [max]="maxDate"
                     placeholder="Selecciona fecha">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>

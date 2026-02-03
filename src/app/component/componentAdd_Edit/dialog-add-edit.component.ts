@@ -17,6 +17,7 @@ export class DialogAddEditComponent implements OnInit {
   tituloAccion: string = "Nuevo";
   botonAccion: string = "Guardar";
   listaUsuarios: Usuario[] = [];
+  maxDate: Date = new Date();
 
   constructor(
     private dialogoReferencia: MatDialogRef<DialogAddEditComponent>,
