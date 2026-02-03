@@ -1,11 +1,8 @@
 
-
-export class Usuario{
-    ID:number = 0;
-    Nombre:string = "";
-    Apellido:string = "";
-    Edad:number = 0;
-
+export class Usuario {
+    ID: number = 0;
+    Nombre: string = "";
+    Apellido: string = "";
+    Edad: number = 0;
+    Estado: string = "Activo";
 }
-    
-

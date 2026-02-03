@@ -1,15 +1,21 @@
-<h1 style="font-size:1.5rem;" mat-dialog-title>Eliminar Usuario</h1>
+<div class="delete-modal-wrapper">
+    <div class="modal-header-premium">
+        <div class="header-icon-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h2>¿Eliminar Usuario?</h2>
+    </div>
 
-<div style="height:100px;display: flex; align-items: center;justify-content: center;" mat-dialog-content>
-    <b>¿Desea eliminar el Usuario "{{ dataUsuario.Nombre }}"?</b>
-</div>
-                
-<div mat-dialog-actions>
-    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="warn" mat-dialog-close>No, Volver</button>
-    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="primary" mat-dialog-close
-     cdkFocusInitial
-     (click)="eliminarUsuario()">Si, Eliminar
-     
-    </button>
-</div>
+    <mat-dialog-content class="modal-body-premium">
+        <p class="main-text">Estás a punto de eliminar a <strong>{{ dataUsuario.Nombre }} {{ dataUsuario.Apellido
+                }}</strong>.</p>
+        <p class="secondary-text">Esta acción es irreversible y el usuario perderá el acceso al sistema.</p>
+    </mat-dialog-content>
 
+    <div class="modal-actions-premium">
+        <button type="button" class="btn btn-secondary" mat-dialog-close>Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="eliminarUsuario()">
+            Eliminar permanentemente
+        </button>
+    </div>
+</div>

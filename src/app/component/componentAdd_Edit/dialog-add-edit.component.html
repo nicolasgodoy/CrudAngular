@@ -1,57 +1,51 @@
-<h1 style="font-size:1.7rem;" mat-dialog-title>{{tituloAccion}} Usuario</h1>
-<div mat-dialog-content>
-    
-    <form [formGroup]="formUsuario">
-        <mat-grid-list style="width:400px" cols="1" rowHeight="100px">
-            <mat-grid-tile>
-               
-                <mat-form-field  appearance="outline">
-                    
-                    <mat-label>Nombre</mat-label>
-                    <input formControlName="Nombre" style="font-size:1.5rem;" matInput placeholder="nombre" autocomplete="off"/>
-                    
-                    
-                  </mat-form-field>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-                <mat-form-field appearance="outline">
-                    <mat-label>Apellido</mat-label>
-                    <input formControlName="Apellido"  style="font-size: 1.5rem;"   matInput placeholder="apellido" autocomplete="off"/>
-                    
-                    
-                </mat-form-field>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-                <mat-form-field appearance="outline">
-                    <mat-label>Edad</mat-label>
-                    <input formControlName="Edad"  style="font-size: 1.5rem;" matInput  placeholder="edad" autocomplete="off" type="number"/>
-                    
-                    
-                </mat-form-field>
-            </mat-grid-tile>
-            
-
-            
-
-        </mat-grid-list>
-        
-        
-        
-        <!-- <button mat-raised-button style="width:100px; margin:10px;" color="primary" >Agregar</button>
-        <button mat-raised-button style="width:100px; margin:10px;" color="primary">Editar</button>
-        <button mat-raised-button style="width:100px; margin:10px;" color="primary">Limpiar</button> -->
-    </form>            
-                
+<div class="modal-header">
+    <div class="header-icon">
+        <i class="fas" [ngClass]="dataUsuario ? 'fa-user-edit' : 'fa-user-plus'"></i>
+    </div>
+    <h2>{{tituloAccion}} Usuario</h2>
 </div>
-                
-    
-<div mat-dialog-actions>
-    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="warn" mat-dialog-close>Close</button>
-    <button mat-raised-button style="font-size:1.2rem;width:150px;" color="primary"
-     [disabled] = "formUsuario.invalid"
-     (click)="AgregarEditUsuario()">{{botonAccion}}
-     
-    </button>
-</div>
+
+<mat-dialog-content class="modal-body">
+    <form [formGroup]="formUsuario" class="premium-form">
+
+        <div class="form-group">
+            <label>Nombre Completo</label>
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" formControlName="Nombre" placeholder="Ingresa el nombre completo" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Apellido</label>
+            <div class="input-container">
+                <i class="fas fa-id-card"></i>
+                <input type="text" formControlName="Apellido" placeholder="Ingresa el apellido" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Edad</label>
+            <div class="input-container">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="number" formControlName="Edad" placeholder="Ingresa la edad">
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="dataUsuario">
+            <label>Estado del Usuario</label>
+            <select formControlName="Estado">
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" mat-dialog-close>Cancelar</button>
+            <button type="button" class="btn btn-primary" [disabled]="formUsuario.invalid"
+                (click)="AgregarEditUsuario()">
+                {{botonAccion === 'Actualizar' ? 'Guardar Cambios' : 'Crear Usuario'}}
+            </button>
+        </div>
+    </form>
+</mat-dialog-content>

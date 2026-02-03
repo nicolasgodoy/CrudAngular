@@ -1,36 +1,70 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import { Usuario } from '../models/usuario';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  constructor(private http:HttpClient) {}
-  
-  url:string = "http://dominioAngular.somee.com/api/Usuario";
-  //url:string = "https://localhost:44330/api/Usuario"; // PARA TRABAJAR LOCAL
-  
+  private STORAGE_KEY = 'usuarios_db';
 
-  getUsuario(){
-    return this.http.get<Usuario[]>(this.url);
-    
+  constructor() {
+    this.initStorage();
   }
 
-  AgregarUsuario(usuario:Usuario):Observable<Usuario>{
-    return this.http.post<Usuario>(this.url, usuario);
+  private initStorage() {
+    if (!localStorage.getItem(this.STORAGE_KEY)) {
+      const initialData: Usuario[] = [
+        { ID: 1, Nombre: 'Juan', Apellido: 'Pérez', Edad: 30, Estado: 'Activo' },
+        { ID: 2, Nombre: 'María', Apellido: 'Gómez', Edad: 25, Estado: 'Activo' },
+        { ID: 3, Nombre: 'Carlos', Apellido: 'Rodríguez', Edad: 41, Estado: 'Inactivo' }
+      ];
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(initialData));
+    }
   }
 
-  EditarUsuario(id:number, usuario:Usuario):Observable<Usuario>{
-    return this.http.put<Usuario>(this.url + `/${id}`, usuario);
+  getUsuario(): Observable<Usuario[]> {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    const usuarios: Usuario[] = data ? JSON.parse(data) : [];
+    return of(usuarios);
   }
 
-  EliminarUsuario(id:number){
-    return this.http.delete<Usuario>(this.url + `/${id}`);
+  AgregarUsuario(usuario: Usuario): Observable<Usuario> {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    const usuarios: Usuario[] = data ? JSON.parse(data) : [];
+
+    // Generate simple ID
+    const maxId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.ID)) : 0;
+    usuario.ID = maxId + 1;
+
+    // Set default status if not provided
+    if (!usuario.Estado) usuario.Estado = 'Activo';
+
+    usuarios.push(usuario);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(usuarios));
+    return of(usuario);
   }
 
+  EditarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    let usuarios: Usuario[] = data ? JSON.parse(data) : [];
 
-   
+    const index = usuarios.findIndex(u => u.ID === id);
+    if (index !== -1) {
+      usuarios[index] = { ...usuario, ID: id };
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(usuarios));
+    }
+    return of(usuarios[index]);
+  }
+
+  EliminarUsuario(id: number): Observable<any> {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    let usuarios: Usuario[] = data ? JSON.parse(data) : [];
+
+    usuarios = usuarios.filter(u => u.ID !== id);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(usuarios));
+    return of({ success: true });
+  }
 }
+

@@ -1,1 +1,49 @@
+.main-container {
+    padding: 0 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
+.actions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+.new-user-btn {
+    height: 56px;
+    padding: 0 24px !important;
+    font-size: 1rem !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 600px) {
+    .actions-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        min-width: 100%;
+    }
+
+    .new-user-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
