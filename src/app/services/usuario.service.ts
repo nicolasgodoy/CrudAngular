@@ -14,13 +14,30 @@ export class UsuarioService {
   }
 
   private initStorage() {
-    if (!localStorage.getItem(this.STORAGE_KEY)) {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    if (!data) {
       const initialData: Usuario[] = [
         { ID: 1, Nombre: 'Juan', Apellido: 'Pérez', FechaNacimiento: '1993-01-01', Estado: 'Activo' },
         { ID: 2, Nombre: 'María', Apellido: 'Gómez', FechaNacimiento: '1998-05-15', Estado: 'Activo' },
         { ID: 3, Nombre: 'Carlos', Apellido: 'Rodríguez', FechaNacimiento: '1982-11-20', Estado: 'Inactivo' }
       ];
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(initialData));
+    } else {
+      // Migration: Ensure all users have FechaNacimiento
+      let usuarios: any[] = JSON.parse(data);
+      let changed = false;
+      usuarios = usuarios.map(u => {
+        if (!u.FechaNacimiento) {
+          changed = true;
+          // If they had Edad, we can estimate or just set a default
+          const year = new Date().getFullYear() - (u.Edad || 30);
+          return { ...u, FechaNacimiento: `${year}-01-01` };
+        }
+        return u;
+      });
+      if (changed) {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(usuarios));
+      }
     }
   }
 

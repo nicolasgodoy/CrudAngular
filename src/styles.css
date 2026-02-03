@@ -341,3 +341,35 @@ body {
 .search-field {
     width: 100%;
 }
+/* Mobile Scroll and Layout Fixes */
+.premium-table-container {
+    overflow: visible !important;
+}
+
+.table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.premium-table {
+    min-width: 850px !important;
+}
+
+.date-picker-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.date-picker-container input {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .premium-table th.mat-mdc-header-cell, 
+    .premium-table td.mat-mdc-cell {
+        padding: 12px 16px !important;
+    }
+}
