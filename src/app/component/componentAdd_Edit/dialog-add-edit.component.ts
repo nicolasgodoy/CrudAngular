@@ -29,7 +29,7 @@ export class DialogAddEditComponent implements OnInit {
       ID: [0, Validators.required],
       Nombre: ["", Validators.required],
       Apellido: ["", Validators.required],
-      Edad: ["", Validators.required],
+      FechaNacimiento: ["", Validators.required],
       Estado: ["Activo", Validators.required]
     })
   }
@@ -47,7 +47,7 @@ export class DialogAddEditComponent implements OnInit {
       ID: this.formUsuario.value.ID,
       Nombre: this.formUsuario.value.Nombre,
       Apellido: this.formUsuario.value.Apellido,
-      Edad: this.formUsuario.value.Edad,
+      FechaNacimiento: this.formUsuario.value.FechaNacimiento,
       Estado: this.formUsuario.value.Estado
     }
 
@@ -78,7 +78,7 @@ export class DialogAddEditComponent implements OnInit {
         ID: this.dataUsuario.ID,
         Nombre: this.dataUsuario.Nombre,
         Apellido: this.dataUsuario.Apellido,
-        Edad: this.dataUsuario.Edad,
+        FechaNacimiento: this.dataUsuario.FechaNacimiento,
         Estado: this.dataUsuario.Estado
       })
 

@@ -16,9 +16,9 @@ export class UsuarioService {
   private initStorage() {
     if (!localStorage.getItem(this.STORAGE_KEY)) {
       const initialData: Usuario[] = [
-        { ID: 1, Nombre: 'Juan', Apellido: 'Pérez', Edad: 30, Estado: 'Activo' },
-        { ID: 2, Nombre: 'María', Apellido: 'Gómez', Edad: 25, Estado: 'Activo' },
-        { ID: 3, Nombre: 'Carlos', Apellido: 'Rodríguez', Edad: 41, Estado: 'Inactivo' }
+        { ID: 1, Nombre: 'Juan', Apellido: 'Pérez', FechaNacimiento: '1993-01-01', Estado: 'Activo' },
+        { ID: 2, Nombre: 'María', Apellido: 'Gómez', FechaNacimiento: '1998-05-15', Estado: 'Activo' },
+        { ID: 3, Nombre: 'Carlos', Apellido: 'Rodríguez', FechaNacimiento: '1982-11-20', Estado: 'Inactivo' }
       ];
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(initialData));
     }

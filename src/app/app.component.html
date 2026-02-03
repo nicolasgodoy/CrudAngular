@@ -76,7 +76,7 @@
 
         <ng-container matColumnDef="Edad">
           <th mat-header-cell *matHeaderCellDef> Edad </th>
-          <td mat-cell *matCellDef="let element"> {{element.Edad}} </td>
+          <td mat-cell *matCellDef="let element"> {{calcularEdad(element.FechaNacimiento)}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Estado">

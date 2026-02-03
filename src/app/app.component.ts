@@ -177,12 +177,25 @@ export class AppComponent implements AfterViewInit, OnInit {
      }
    });
   } */
+  calcularEdad(fechaNacimiento: string): number {
+    if (!fechaNacimiento) return 0;
+    const birthDate = new Date(fechaNacimiento);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  }
+
   exportarExcel() {
     const dataToExport = this.dataSource.data.map(user => ({
       ID: user.ID,
       Nombre: user.Nombre,
       Apellido: user.Apellido,
-      Edad: user.Edad,
+      'Fecha de Nacimiento': user.FechaNacimiento,
+      Edad: this.calcularEdad(user.FechaNacimiento),
       Estado: user.Estado
     }));
 
